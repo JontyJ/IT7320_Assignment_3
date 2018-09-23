@@ -8,15 +8,15 @@ public class Implementation implements Compute{
 		return obj.computeTax(amount);
 	}
 
-	public double weeklySalary(Employee emp) {
+	public int weeklySalary(Employee emp) {
 		return obj.weeklySalary(emp);
 	}
 
-	public double fortnightSalary(Employee emp) {
+	public int fortnightSalary(Employee emp) {
 		return obj.fortnightSalary(emp);
 	}
 
-	public int computeKiwiSaver(Employee emp) {
+	public double computeKiwiSaver(Employee emp) {
 		return obj.computeKiwiSaver(emp);
 	}
 	

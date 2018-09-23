@@ -11,17 +11,26 @@ public class ImplementationTest {
 
 	Compute interfaceObj;
 	Implementation implementationObj;
-	int x;
-	double a, b;
-	
+	Employee emp;
+	int a,b,c;
+	double d;
+
 	@Before
 	public void setUp() throws Exception {
 		implementationObj = new Implementation();
-		x = 100000;
+		a = 100000;
+		b = 52;
+		c = 26;
+		d = 0.03;
+		
 		
 		// Initialized the mock object
 		interfaceObj = Mockito.mock(Compute.class);
-		Mockito.when(interfaceObj.computeTax(x)).thenReturn(30000);
+		Mockito.when(interfaceObj.computeTax(a)).thenReturn(30000);
+		Mockito.when(interfaceObj.weeklySalary(emp)).thenReturn(1923);
+		Mockito.when(interfaceObj.fortnightSalary(emp)).thenReturn(3846);
+		Mockito.when(interfaceObj.computeKiwiSaver(emp)).thenReturn(57.69);
+		
 				
 		implementationObj.setObj(interfaceObj);
 	}
@@ -34,42 +43,22 @@ public class ImplementationTest {
 
 	@Test
 	public void testComputeTax() {
-		assertEquals(30000, implementationObj.computeTax(x));
+		assertEquals(30000, implementationObj.computeTax(a));
 	}
 
 	@Test
 	public void testWeeklySalary() {
-		fail("Not yet implemented");
+		assertEquals((a/b), implementationObj.weeklySalary(emp));
 	}
 
-//	@Test
-//	public void testFortnightSalary() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	public void testComputeKiwiSaver() {
-//		fail("Not yet implemented");
-//	}
-//	
-	
-//	public int calculateTax ( int amount) {
-//		if(amount <= 14000) {
-//			amount = (int) (amount / 10.5) * 100; 
-//		}
-//		else 
-//			if(amount > 14000 && amount <= 48000) {
-//				amount = (int) (amount / 17.5) * 100;
-//			}
-//		else
-//				if(amount > 48000 && amount <= 70000 ) {
-//					amount = (amount / 30) * 100;
-//				}
-//				else
-//					if(amount > 70000) {
-//						amount = (amount / 33) * 100; 
-//					}
-//		return amount;
-//	}
+	@Test
+	public void testFortnightSalary() {
+		assertEquals((a/c), implementationObj.fortnightSalary(emp));
+	}
 
+	@Test
+	public void testComputeKiwiSaver() {
+		assertEquals((1923*d), implementationObj.computeKiwiSaver(emp), 0);
+	}
+	
 }
